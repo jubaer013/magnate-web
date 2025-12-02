@@ -340,7 +340,6 @@ footer, footer * {
   gap: 40px;
   padding: 0px 15px;
   margin: 30px auto;
-  max-width: 1200px;
   animation: fadeIn 0.8s ease-in-out;
 }
 
