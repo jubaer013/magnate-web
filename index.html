@@ -238,45 +238,25 @@
 </html>
 
 
-<!-- 1️⃣ Back to Office PC
+<!-- /*
+Multi-Device Git Workflow:
 
-Before you start working, make sure your local repository is up-to-date with GitHub.
+1. Before starting work on any device:
+   git pull origin main --rebase
+   # Pull latest changes from GitHub to stay in sync
 
-cd path/to/your/repo
-git pull origin main
+2. Do your coding / edits
 
+3. Stage and commit changes:
+   git add .
+   git commit -m "Describe your changes"
 
-This fetches all changes you did from home
+4. Push changes to GitHub:
+   git push origin main
 
-Now your local office repo is in sync with GitHub, including edits made at home.
-
-If Git reports merge conflicts, resolve them manually before continuing.
-
-2️⃣ Work on Office PC
-
-Edit files as usual.
-
-Stage and commit your changes:
-
-git add .
-git commit -m "Describe the changes made at office"
-
-3️⃣ Push Office PC Changes to GitHub
-git push origin main
-
-
-GitHub now has all combined changes: office + home.
-
-Other devices can pull these updates next time.
-
-Key Rules for Multi-Device Workflow
-
-Always pull first before starting work on any device.
-
-Always push after finishing work.
-
-Use branches for experiments to avoid conflicts on main.
-
-Merge conflicts only happen if the same lines in the same file were edited on different devices.
-
-✅ Following this, you can seamlessly switch devices and GitHub will always be your source of truth. -->
+Rules:
+- Always pull first before working on a device
+- Always push after finishing work
+- Resolve merge conflicts if any
+- Optional: Use branches for experiments
+*/ -->
