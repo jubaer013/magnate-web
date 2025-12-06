@@ -1,4 +1,4 @@
-// script.js - WITH HAMBURGER TO X ANIMATION
+// script.js - COMPLETE WITH HAMBURGER TO X ANIMATION
 
 // Wait for DOM to be fully loaded
 document.addEventListener('DOMContentLoaded', function() {
@@ -207,7 +207,7 @@ style.textContent = `
   
   /* Improve hamburger animation smoothness */
   .menu-btn span {
-    transition: all 0.3s cubic-bezier(0.77, 0, 0.175, 1);
+    transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
   }
   
   /* Ensure the X animation is smooth */
@@ -217,7 +217,7 @@ style.textContent = `
   
   /* Accessibility focus styles */
   .menu-btn:focus {
-    outline: 2px solid #f2b200;
+    outline: 2px solid #f2b400;
     outline-offset: 2px;
     border-radius: 8px;
   }
@@ -226,5 +226,64 @@ style.textContent = `
   .menu-btn span {
     animation: none !important;
   }
+  
+  /* Custom styles for better mobile experience */
+  @media (max-width: 480px) {
+    .menu-btn {
+      width: 40px;
+      height: 40px;
+    }
+    
+    .menu-btn span {
+      width: 24px;
+      height: 2.5px;
+    }
+    
+    .menu-btn.open span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+    
+    .menu-btn.open span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+  }
 `;
 document.head.appendChild(style);
+
+// Initialize on page load
+window.addEventListener('load', function() {
+  // Set initial aria attributes
+  const menuBtn = document.getElementById('menuBtn');
+  if (menuBtn) {
+    menuBtn.setAttribute('aria-label', 'Open menu');
+    menuBtn.setAttribute('aria-expanded', 'false');
+    menuBtn.setAttribute('aria-controls', 'mobileDrawer');
+  }
+  
+  // Add aria label to close button
+  const closeBtn = document.getElementById('closeBtn');
+  if (closeBtn) {
+    closeBtn.setAttribute('aria-label', 'Close menu');
+  }
+  
+  // Add role and aria-label to mobile drawer
+  const mobileDrawer = document.getElementById('mobileDrawer');
+  if (mobileDrawer) {
+    mobileDrawer.setAttribute('role', 'dialog');
+    mobileDrawer.setAttribute('aria-modal', 'true');
+    mobileDrawer.setAttribute('aria-label', 'Mobile menu');
+    mobileDrawer.setAttribute('aria-hidden', 'true');
+    
+    // Update aria-hidden when menu opens/closes
+    const observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        if (mutation.attributeName === 'class') {
+          const isOpen = mobileDrawer.classList.contains('open');
+          mobileDrawer.setAttribute('aria-hidden', !isOpen);
+        }
+      });
+    });
+    
+    observer.observe(mobileDrawer, { attributes: true });
+  }
+});

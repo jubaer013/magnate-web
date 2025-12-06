@@ -1,4 +1,4 @@
-/* style.css - COMPLETE FIXED VERSION */
+/* style.css - COMPLETE WITH HAMBURGER TO X ANIMATION */
 
 :root {
   --mfl-dark: #1a1a1a; 
@@ -100,16 +100,22 @@ body {
   width: 100%;
 }
 
-/* Hamburger Button */
+/* ===== HAMBURGER TO X ANIMATION ===== */
 .menu-btn {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 5px;
   background: none;
   border: none;
   cursor: pointer;
   padding: 8px;
   z-index: 1001;
+  width: 44px;
+  height: 44px;
+  transition: all 0.3s;
+  position: relative;
 }
 
 .menu-btn span {
@@ -117,7 +123,128 @@ body {
   height: 3px;
   background: var(--mfl-btn);
   border-radius: 3px;
-  transition: all 0.3s;
+  transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  transform-origin: center;
+  display: block;
+}
+
+/* Hamburger to X Animation */
+.menu-btn.open span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.menu-btn.open span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.menu-btn.open span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Optional: Add background to button when menu is open */
+.menu-btn.open {
+  background: rgba(244, 180, 0, 0.1);
+  border-radius: 8px;
+}
+
+/* Enhanced X Animation with bounce effect */
+.menu-btn.open span:nth-child(1) {
+  animation: bar1Rotate 0.4s ease;
+}
+
+.menu-btn.open span:nth-child(3) {
+  animation: bar3Rotate 0.4s ease;
+}
+
+@keyframes bar1Rotate {
+  0% {
+    transform: translateY(0) rotate(0) scaleX(1);
+  }
+  50% {
+    transform: translateY(8px) rotate(0) scaleX(0.5);
+  }
+  100% {
+    transform: translateY(8px) rotate(45deg) scaleX(1);
+  }
+}
+
+@keyframes bar3Rotate {
+  0% {
+    transform: translateY(0) rotate(0) scaleX(1);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0) scaleX(0.5);
+  }
+  100% {
+    transform: translateY(-8px) rotate(-45deg) scaleX(1);
+  }
+}
+
+/* Reverse animation when closing */
+.menu-btn:not(.open) span:nth-child(1) {
+  animation: bar1Reverse 0.4s ease;
+}
+
+.menu-btn:not(.open) span:nth-child(2) {
+  animation: bar2Reverse 0.4s ease 0.1s;
+}
+
+.menu-btn:not(.open) span:nth-child(3) {
+  animation: bar3Reverse 0.4s ease;
+}
+
+@keyframes bar1Reverse {
+  0% {
+    transform: translateY(8px) rotate(45deg) scaleX(1);
+  }
+  50% {
+    transform: translateY(8px) rotate(0) scaleX(0.5);
+  }
+  100% {
+    transform: translateY(0) rotate(0) scaleX(1);
+  }
+}
+
+@keyframes bar2Reverse {
+  0% {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleX(1);
+  }
+}
+
+@keyframes bar3Reverse {
+  0% {
+    transform: translateY(-8px) rotate(-45deg) scaleX(1);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0) scaleX(0.5);
+  }
+  100% {
+    transform: translateY(0) rotate(0) scaleX(1);
+  }
+}
+
+/* Mobile drawer overlay effect */
+.mobile-drawer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+}
+
+.mobile-drawer.open::before {
+  opacity: 1;
 }
 
 /* Mobile Drawer */
@@ -139,6 +266,7 @@ body {
   left: 0;
 }
 
+/* Close Button */
 .close-btn {
   position: absolute;
   top: 25px;
@@ -150,8 +278,24 @@ body {
   cursor: pointer;
   font-weight: 300;
   z-index: 1002;
+  transition: transform 0.3s ease;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+.close-btn:hover {
+  transform: scale(1.1);
+}
+
+.close-btn:focus {
+  outline: 2px solid #f2b200;
+  border-radius: 4px;
+}
+
+/* Mobile Navigation */
 .mobile-nav ul {
   list-style: none;
   padding: 0 20px;
@@ -394,6 +538,19 @@ body {
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }
+}
+
+/* Accessibility focus styles */
+.menu-btn:focus,
+.close-btn:focus {
+  outline: 2px solid #f2b200;
+  outline-offset: 2px;
+  border-radius: 8px;
+}
+
+/* Prevent animation on page load */
+.menu-btn span {
+  animation: none !important;
 }
 
 /* ===== RESPONSIVE BREAKPOINTS ===== */
