@@ -440,47 +440,49 @@ body {
 .footer-col ul li a {
   color: #aaa;
   text-decoration: none;
-  transition: color var(--transition-speed);
+  transition: all var(--transition-speed);
   display: inline-block;
   font-size: 13px;
   line-height: 1.4;
 }
 
-/* .footer-col ul li a:hover {
-  color: #f4b400;
-  padding-left: 3px;
-} */
+/* NEW: Hover effect for footer links - same color as h3 */
+.footer-col ul li a:hover {
+  color: #f4b400; /* Same gold color as h3 */
+  transform: translateX(3px);
+}
 
 .mt-4 {
   margin-top: 20px;
 }
 
-/* Social Links */
+/* Social Links - REMOVED CIRCLE BACKGROUND */
 .social-links {
   list-style: none;
   padding: 0;
   margin: 15px 0 0;
   display: flex;
-  gap: 10px;
+  gap: 15px; /* Increased gap for better spacing */
 }
 
 .social-links li a {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  background: #222;
-  color: white;
+  color: #aaa; /* Default color same as other links */
   text-decoration: none;
   transition: all var(--transition-speed);
-  font-size: 16px;
+  font-size: 18px; /* Slightly larger icons */
+  width: auto; /* Remove fixed width */
+  height: auto; /* Remove fixed height */
+  background: none; /* Remove circle background */
+  border-radius: 0; /* Remove circle shape */
 }
 
+/* NEW: Social icon hover - same color as h3 */
 .social-links li a:hover {
-  background: #f2b200;
-  /* transform: translateY(-2px); */
+  color: #f4b400; /* Same gold color as h3 */
+  transform: translateY(-2px); /* Subtle lift effect */
 }
 
 /* Map Container */
@@ -499,12 +501,31 @@ body {
   display: block;
 }
 
+footer iframe {
+  pointer-events: none;
+}
+
+.office-slider-container,
+.slider-nav,
+.prev-btn,
+.next-btn {
+  position: relative;
+  z-index: 9999;
+}
+
 /* Location Container */
 .location-container {
   margin-top: 15px;
 }
 
 /* Office Slider */
+.office-slider-container,
+.slider-controls,
+.slider-nav {
+  position: relative;
+  z-index: 2; /* Ensure slider buttons are above map */
+}
+
 .office-slider-container {
   margin-top: 15px;
   width: 100%;
