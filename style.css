@@ -25,7 +25,6 @@ html, body {
 
 body {
   background-color: #fff7ea;
-  padding: 90px 0 0 0; /* Space for fixed header */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -313,6 +312,7 @@ body {
   max-width: 1400px;
   width: 100%;
   animation: fadeIn 0.8s ease-in-out;
+  margin-top: 120px;
 }
 
 .welcome-text {
