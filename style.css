@@ -799,7 +799,7 @@ footer iframe {
 /* Medium Phones (max-width: 768px) */
 @media (max-width: 768px) {
   body {
-    padding: 80px 0 0 0;
+    /* padding: 80px 0 0 0; */
   }
   
   .welcome-box {
@@ -879,7 +879,7 @@ footer iframe {
 /* Small Phones (max-width: 480px) */
 @media (max-width: 480px) {
   body {
-    padding: 70px 0 0 0;
+    /* padding: 70px 0 0 0; */
   }
   
   .container {
@@ -1402,4 +1402,38 @@ footer iframe {
   .mission-vision {
     padding: 40px 20px;
   }
+}
+
+
+/* ===== FIX OFFICE LOCATION SLIDER OVERFLOW ===== */
+.footer .office-slider {
+  height: 120px !important;
+}
+
+.footer .slide {
+  padding: 8px !important;
+}
+
+.footer .slide-content {
+  max-width: 100% !important;
+  text-align: center;
+}
+
+.footer .slide-content h4 {
+  font-size: 12px !important;
+  line-height: 1.2 !important;
+  margin-bottom: 4px !important;
+  white-space: normal !important;
+}
+
+.footer .slide-content p {
+  font-size: 10px !important;
+  line-height: 1.2 !important;
+  margin: 2px 0 !important;
+  white-space: normal !important;
+  overflow-wrap: break-word;
+}
+
+.footer .office-slider-container {
+  padding: 10px !important;
 }
