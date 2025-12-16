@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0, viewport-fit=cover"/>
+  <title>Contact Us - MFL - Magnate Freight Ltd</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="contact.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="container">
+
+      <!-- Mobile Hamburger -->
+      <button class="menu-btn" id="menuBtn" aria-label="Open menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <!-- Desktop Logo (hidden on mobile) -->
+      <div class="logo desktop-only">
+        <img src="public/img/logo.png" alt="MFL Logo">
+      </div>
+
+      <!-- Desktop Navigation -->
+      <nav class="desktop-nav">
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about-us.html">About Us</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">News</a></li>
+          <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- Mobile Logo (right side) -->
+      <div class="logo mobile-only">
+        <img src="public/img/logo.png" alt="MFL">
+      </div>
+    </div>
+  </header>
+
+  <!-- MOBILE DRAWER -->
+  <div class="mobile-drawer" id="mobileDrawer">
+    <button class="close-btn" id="closeBtn" aria-label="Close menu">&times;</button>
+    <nav class="mobile-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about-us.html">About Us</a></li>
+        <li><a href="#">Services</a></li>
+         
+        <li><a href="#">News</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+
+  <!-- CONTACT SECTION -->
+  <section class="contact-section">
+    <div class="contact-header">
+      <h1>Contact Magnate Freight Ltd</h1>
+      <p>Get in touch with our logistics experts. We're here to help with your freight and shipping needs.</p>
+    </div>
+
+    <div class="contact-container">
+      <!-- Contact Information -->
+      <div class="contact-info">
+        <h2>Get In Touch</h2>
+        <div class="contact-details">
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <div class="contact-text">
+              <h4>Headquarters Address</h4>
+              <p>House 123, Road 8B, Nikunja 2<br>Dhaka 1229, Bangladesh</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <i class="fas fa-phone-alt"></i>
+            <div class="contact-text">
+              <h4>Phone Number</h4>
+              <p>+880 2 987 6543<br>+880 1712 345678 (Mobile)</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <div class="contact-text">
+              <h4>Email Address</h4>
+              <p>info@mfl.com<br>support@mfl.com</p>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <i class="fas fa-fax"></i>
+            <div class="contact-text">
+              <h4>Fax</h4>
+              <p>+880 2 987 6544</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="working-hours-info">
+          <h4>Working Hours</h4>
+          <p><strong>Saturday to Thursday:</strong> 9:00 AM to 6:00 PM</p>
+          <p><strong>Friday:</strong> Closed</p>
+          <p><strong>Public Holidays:</strong> As per Bangladesh calendar</p>
+        </div>
+
+        <div class="emergency-contact">
+          <h3><i class="fas fa-exclamation-triangle"></i> Emergency Support</h3>
+          <p>For urgent shipping emergencies outside business hours</p>
+          <div class="emergency-phone">+880 1712 999999</div>
+          <p>Available 24/7 for critical logistics support</p>
+        </div>
+      </div>
+
+      <!-- Contact Form -->
+      <div class="contact-form">
+        <h2>Send Us a Message</h2>
+        <form id="contactForm">
+          <div class="form-group">
+            <label for="name">Full Name *</label>
+            <input type="text" id="name" name="name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email Address *</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone">
+          </div>
+
+          <div class="form-group">
+            <label for="company">Company Name</label>
+            <input type="text" id="company" name="company">
+          </div>
+
+          <div class="form-group">
+            <label for="service">Service Interested In</label>
+            <select id="service" name="service">
+              <option value="">Select a service</option>
+              <option value="sea-freight">Sea Freight</option>
+              <option value="air-freight">Air Freight</option>
+              <option value="land-transport">Land Transport</option>
+              <option value="warehousing">Warehousing & Distribution</option>
+              <option value="customs">Customs Brokerage</option>
+              <option value="insurance">Cargo Insurance</option>
+              <option value="other">Other Services</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Your Message *</label>
+            <textarea id="message" name="message" placeholder="Please provide details about your shipping requirements..." required></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Map Section -->
+    <div class="contact-map">
+      <h2>Our Location</h2>
+      <div class="map-wrapper">
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d912.9623754217482!2d90.39194246960989!3d23.75274562616972!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8a2949e0719%3A0x4dbe5bf7a0d42a8c!2sMAGNATE%20FREIGHT%20LTD.!5e0!3m2!1sen!2sbd!4v1764506907598!5m2!1sen!2sbd" 
+          allowfullscreen="" 
+          loading="lazy" 
+          referrerpolicy="no-referrer-when-downgrade" 
+          title="MFL Headquarters Location">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <!-- Main Footer -->
+    <div class="footer-main">
+      <div class="footer-container footer-grid">
+
+        <!-- Column 1 -->
+        <div class="footer-col">
+          <h3 class="footer-title">Logistics solutions</h3>
+          <ul>
+            <li><a href="#">Maritime transport</a></li>
+            <li><a href="#">Air transport</a></li>
+            <li><a href="#">Land transport</a></li>
+            <li><a href="#">Industrial projects</a></li>
+            <li><a href="#">Contractual logistics</a></li>
+            <li><a href="#">Warehousing and distribution</a></li>
+            <li><a href="#">Cargo insurance</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="footer-col">
+          <h3 class="footer-title">Discover Magnate Freight LTD.</h3>
+          <ul>
+            <li><a href="#">Our story</a></li>
+            <li><a href="#">Our offices</a></li>
+            <li><a href="#">News</a></li>
+          </ul>
+
+          <h3 class="footer-title mt-4">Connect with us</h3>
+          <ul>
+            <li><a href="contact.html">Contact us</a></li>
+            <li><a href="#">Request a quote</a></li>
+            <li><a href="#">Employment</a></li>
+          </ul>
+        </div>
+
+        <!-- Column 3 -->
+        <div class="footer-col">
+          <h3 class="footer-title">
+            <a href="#" class="footer-title-link">Privacy & Legal</a>
+          </h3>
+          <ul class="social-links">
+            <li>
+              <a href="#" aria-label="Facebook">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#" aria-label="Instagram">
+                <i class="fab fa-instagram"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#" aria-label="LinkedIn">
+                <i class="fab fa-linkedin-in"></i>
+              </a>
+            </li>
+          </ul>
+          
+          <!-- Combined Map & Slider Container -->
+          <div class="location-container">
+            <div class="map-container">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d912.9623754217482!2d90.39194246960989!3d23.75274562616972!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3755b8a2949e0719%3A0x4dbe5bf7a0d42a8c!2sMAGNATE%20FREIGHT%20LTD.!5e0!3m2!1sen!2sbd!4v1764506907598!5m2!1sen!2sbd" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="MFL Location Map"></iframe>
+            </div>
+            
+            <div class="office-slider-container">
+              <h3 class="slider-title">Our Global Offices</h3>
+              <div class="office-slider">
+                <!-- Slide 1 -->
+                <div class="slide active">
+                  <div class="slide-content">
+                    <h4>🇧🇩 Dhaka HQ</h4>
+                    <p>House 123, Road 8B, Nikunja 2</p>
+                    <p>Dhaka 1229, Bangladesh</p>
+                    <p>📞 +880 2 987 6543</p>
+                  </div>
+                </div>
+                
+                <!-- Slide 2 -->
+                <div class="slide">
+                  <div class="slide-content">
+                    <h4>🇸🇬 Singapore</h4>
+                    <p>101A Upper Cross Street</p>
+                    <p>Singapore 058357</p>
+                    <p>📞 +65 6789 0123</p>
+                  </div>
+                </div>
+                
+                <!-- Slide 3 -->
+                <div class="slide">
+                  <div class="slide-content">
+                    <h4>🇦🇪 Dubai</h4>
+                    <p>Office 1704, Jumeirah Business Center</p>
+                    <p>Dubai, UAE</p>
+                    <p>📞 +971 4 456 7890</p>
+                  </div>
+                </div>
+                
+                <!-- Slide 4 -->
+                <div class="slide">
+                  <div class="slide-content">
+                    <h4>🇺🇸 New York</h4>
+                    <p>45 Rockefeller Plaza</p>
+                    <p>New York, NY 10111, USA</p>
+                    <p>📞 +1 212 555 7890</p>
+                  </div>
+                </div>
+                
+                <!-- Slide 5 -->
+                <div class="slide">
+                  <div class="slide-content">
+                    <h4>🇬🇧 London</h4>
+                    <p>30 St Mary Axe</p>
+                    <p>London EC3A 8EP, UK</p>
+                    <p>📞 +44 20 7946 0958</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div class="slider-controls">
+                <div class="slider-dots">
+                  <span class="dot active" data-slide="0"></span>
+                  <span class="dot" data-slide="1"></span>
+                  <span class="dot" data-slide="2"></span>
+                  <span class="dot" data-slide="3"></span>
+                  <span class="dot" data-slide="4"></span>
+                </div>
+                <div class="slider-nav">
+                  <button class="slider-btn prev-btn" aria-label="Previous office">
+                    <i class="fas fa-chevron-left"></i>
+                  </button>
+                  <button class="slider-btn next-btn" aria-label="Next office">
+                    <i class="fas fa-chevron-right"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Bottom -->
+    <div class="footer-bottom">
+      <div class="footer-container">
+        <p>&copy; 2025 Magnate Freight LTD. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Form submission handler
+    document.addEventListener('DOMContentLoaded', function() {
+      const contactForm = document.getElementById('contactForm');
+      
+      if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          
+          // Get form data
+          const formData = new FormData(contactForm);
+          const formObject = Object.fromEntries(formData);
+          
+          // In a real application, you would send this data to a server
+          // For now, we'll just show an alert
+          alert('Thank you for your message! We will contact you shortly.');
+          
+          // Reset the form
+          contactForm.reset();
+        });
+      }
+    });
+  </script>
+</body>
+</html>
