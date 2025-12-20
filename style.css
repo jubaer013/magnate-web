@@ -2607,7 +2607,7 @@ footer iframe {
 .service-card {
   background: white;
   border-radius: 10px;
-  height: fit-content;
+  /* height: fit-content; */
   padding: 30px;
   text-align: center;
   box-shadow: 0 5px 15px rgba(0,0,0,0.08);
@@ -2620,7 +2620,7 @@ footer iframe {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
+  /* height: 100%; */
 }
 
 .service-card:hover {
