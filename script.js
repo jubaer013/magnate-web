@@ -112,3 +112,90 @@ document.addEventListener('DOMContentLoaded', function() {
     showSlide(0); // Initialize
   }
 });
+
+// ===== HERO SLIDER =====
+const heroSlides = document.querySelectorAll('.hero-slide');
+const heroDots = document.querySelectorAll('.hero-dot');
+const heroPrevBtn = document.querySelector('.hero-prev');
+const heroNextBtn = document.querySelector('.hero-next');
+
+if(heroSlides.length) {
+  let currentHeroSlide = 0;
+  
+  function showHeroSlide(index) {
+    if(index >= heroSlides.length) index = 0;
+    if(index < 0) index = heroSlides.length - 1;
+    currentHeroSlide = index;
+    heroSlides.forEach(slide => slide.classList.remove('active'));
+    heroDots.forEach(dot => dot.classList.remove('active'));
+    heroSlides[currentHeroSlide].classList.add('active');
+    if(heroDots[currentHeroSlide]) heroDots[currentHeroSlide].classList.add('active');
+  }
+  
+  function nextHeroSlide() {
+    showHeroSlide(currentHeroSlide + 1);
+  }
+  
+  function prevHeroSlide() {
+    showHeroSlide(currentHeroSlide - 1);
+  }
+  
+  if(heroPrevBtn) heroPrevBtn.addEventListener('click', prevHeroSlide);
+  if(heroNextBtn) heroNextBtn.addEventListener('click', nextHeroSlide);
+  
+  heroDots.forEach((dot, i) => {
+    dot.addEventListener('click', () => showHeroSlide(i));
+  });
+  
+  // Auto slide every 5 seconds
+  let heroSlideInterval = setInterval(nextHeroSlide, 5000);
+  
+  // Pause auto-slide on hover
+  const heroSlider = document.querySelector('.hero-slider');
+  if(heroSlider) {
+    heroSlider.addEventListener('mouseenter', () => {
+      clearInterval(heroSlideInterval);
+    });
+    
+    heroSlider.addEventListener('mouseleave', () => {
+      heroSlideInterval = setInterval(nextHeroSlide, 5000);
+    });
+  }
+  
+  showHeroSlide(0);
+}
+
+// ===== STATISTICS COUNTER =====
+const statNumbers = document.querySelectorAll('.stat-number');
+if(statNumbers.length) {
+  const observerOptions = {
+    threshold: 0.5
+  };
+  
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if(entry.isIntersecting) {
+        const statNumber = entry.target;
+        const target = parseInt(statNumber.getAttribute('data-count'));
+        const duration = 2000; // 2 seconds
+        const step = target / (duration / 16); // 60fps
+        
+        let current = 0;
+        const timer = setInterval(() => {
+          current += step;
+          if(current >= target) {
+            current = target;
+            clearInterval(timer);
+          }
+          statNumber.textContent = Math.floor(current);
+        }, 16);
+        
+        observer.unobserve(statNumber);
+      }
+    });
+  }, observerOptions);
+  
+  statNumbers.forEach(stat => {
+    observer.observe(stat);
+  });
+}
