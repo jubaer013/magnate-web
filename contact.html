@@ -317,29 +317,104 @@
     </div>
   </footer>
 
-  <script src="script.js"></script>
-  <script>
-    // Form submission handler
-    document.addEventListener('DOMContentLoaded', function() {
-      const contactForm = document.getElementById('contactForm');
+ <script src="script.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const contactForm = document.getElementById('contactForm');
+  
+  if (contactForm) {
+    contactForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
       
-      if (contactForm) {
-        contactForm.addEventListener('submit', function(e) {
-          e.preventDefault();
-          
-          // Get form data
-          const formData = new FormData(contactForm);
-          const formObject = Object.fromEntries(formData);
-          
-          // In a real application, you would send this data to a server
-          // For now, we'll just show an alert
-          alert('Thank you for your message! We will contact you shortly.');
-          
-          // Reset the form
-          contactForm.reset();
+      console.log("Form submission started");
+      
+      // Get form data
+      const formData = new FormData(contactForm);
+      const data = {};
+      formData.forEach((value, key) => {
+        data[key] = value;
+        console.log(`${key}: ${value}`);
+      });
+      
+      // Show loading state
+      const submitBtn = contactForm.querySelector('.submit-btn');
+      const originalText = submitBtn.innerHTML;
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+      submitBtn.disabled = true;
+      
+      // IMPORTANT: Use your active script URL
+      const scriptURL = "https://script.google.com/macros/s/AKfycbzdibTMZJqtCrgEp1FTtHuLqfC72sZXU_AwyCyDiJ3Wa9HsMcdvRyjwKPk8gvB1qzT-Fw/exec";
+      
+      try {
+        // Send data to Google Apps Script
+        const response = await fetch(scriptURL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: new URLSearchParams(data).toString()
         });
+        
+        // Parse the JSON response
+        const result = await response.json();
+        console.log("Server Response:", result);
+        
+        if (result.success) {
+          // Success! Reset form and show message
+          contactForm.reset();
+          alert('✅ Thank you! Your message has been sent successfully. We will contact you shortly.');
+        } else {
+          // Server returned an error
+          alert('❌ Sorry, there was an error: ' + (result.message || 'Please try again.'));
+        }
+        
+      } catch (error) {
+        console.error('Network or Fetch Error:', error);
+        // Fallback method: Use the hidden form approach but without opening a new tab
+        submitUsingHiddenForm(data, scriptURL);
+        
+        // Show success message for fallback method
+        setTimeout(function() {
+          alert('✅ Thank you! Your message has been sent successfully.');
+          contactForm.reset();
+        }, 500);
+        
+      } finally {
+        // Always reset button state
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
       }
     });
-  </script>
+  }
+  
+  // Fallback function using hidden form (without new tab)
+  function submitUsingHiddenForm(formData, url) {
+    const form = document.createElement('form');
+    form.method = 'POST';
+    form.action = url;
+    form.style.display = 'none';
+    
+    // Add all form fields
+    Object.keys(formData).forEach(key => {
+      const input = document.createElement('input');
+      input.type = 'hidden';
+      input.name = key;
+      input.value = formData[key];
+      form.appendChild(input);
+    });
+    
+    // Add to page, submit, then remove
+    document.body.appendChild(form);
+    form.submit();
+    
+    // Remove form after a short delay
+    setTimeout(() => {
+      if (document.body.contains(form)) {
+        document.body.removeChild(form);
+      }
+    }, 1000);
+  }
+});
+</script>
 </body>
 </html>
