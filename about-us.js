@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   function startAutoSlide() {
-    heroSlideInterval = setInterval(nextHeroSlide, 5000);
+    heroSlideInterval = setInterval(nextHeroSlide, 15000);
   }
   
   function stopAutoSlide() {

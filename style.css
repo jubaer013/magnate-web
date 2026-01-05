@@ -722,6 +722,68 @@ footer iframe {
   background: #f2b200;
 }
 
+/* ===== BUTTON FIXES - ADDED TO FIX MOBILE BUTTON ISSUES ===== */
+/* Base button styles for all screen sizes */
+.btn-primary {
+  display: inline-block;
+  background: #f2b200;
+  color: #000;
+  padding: 14px 32px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 16px;
+  border: 2px solid #f2b200;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
+  min-width: 180px;
+}
+
+.btn-primary:hover {
+  background: transparent;
+  color: #f2b200;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(242, 178, 0, 0.2);
+}
+
+/* Hero slider specific button fixes */
+.hero-slider .btn-primary {
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative !important;
+  z-index: 10 !important;
+}
+
+/* Fix for all hero slider buttons on mobile */
+@media (max-width: 991px) {
+  .hero-slider .btn-primary {
+    display: inline-block !important;
+    min-width: 160px;
+    padding: 12px 28px;
+    font-size: 15px;
+    margin-top: 10px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-slider .btn-primary {
+    min-width: 140px;
+    padding: 11px 24px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-slider .btn-primary {
+    min-width: 130px;
+    padding: 10px 20px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+}
+
 /* ===== RESPONSIVE BREAKPOINTS ===== */
 /* Tablets (max-width: 991px) */
 @media (max-width: 991px) {
@@ -786,6 +848,12 @@ footer iframe {
   .statistics-section,
   .quote-section {
     display: none !important;
+  }
+  
+  /* Ensure hero buttons are visible */
+  .hero-slider .slide-content .btn-primary {
+    display: inline-block !important;
+    visibility: visible !important;
   }
 }
 
@@ -910,11 +978,21 @@ footer iframe {
   }
   
   .btn-primary {
+    display: inline-block;
     background: #f2b200;
     color: #000;
-    border-color: #f2b200;
+    padding: 14px 32px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 16px;
+    border: 2px solid #f2b200;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    min-width: 180px;
   }
-  
+
   .btn-primary:hover {
     background: transparent;
     color: #f2b200;
@@ -1009,6 +1087,14 @@ footer iframe {
     display: flex;
     flex-direction: column;
     gap: 15px;
+  }
+  
+  /* Hero slider button fixes for medium screens */
+  .hero-slider .btn-primary {
+    display: inline-block !important;
+    min-width: 150px;
+    padding: 12px 25px;
+    font-size: 14px;
   }
 }
 
@@ -1131,6 +1217,15 @@ footer iframe {
   .map-container iframe {
     height: 120px;
   }
+  
+  /* Hero slider button fixes for small screens */
+  .hero-slider .btn-primary {
+    display: inline-block !important;
+    min-width: 140px;
+    padding: 11px 22px;
+    font-size: 13px;
+    white-space: nowrap;
+  }
 }
 
 /* Extra Small Phones (max-width: 375px) */
@@ -1191,6 +1286,13 @@ footer iframe {
   }
   
   .slider-title {
+    font-size: 12px;
+  }
+  
+  /* Hero slider button fixes for extra small screens */
+  .hero-slider .btn-primary {
+    min-width: 130px;
+    padding: 10px 20px;
     font-size: 12px;
   }
 }
@@ -1306,6 +1408,7 @@ footer iframe {
   font-size: 16px;
   transition: all 0.3s;
   border: 2px solid #f2b200;
+  /* You can also just use btn-primary class directly */
 }
 
 .hero-btn:hover {
@@ -1323,20 +1426,6 @@ footer iframe {
   display: flex;
   gap: 15px;
   z-index: 10;
-}
-
-.hero-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.5);
-  cursor: pointer;
-  transition: all 0.3s;
-}
-
-.hero-dot.active {
-  background: #f2b200;
-  transform: scale(1.3);
 }
 
 .hero-nav-btn {
@@ -2571,7 +2660,7 @@ footer iframe {
 }
 
 .section-header p {
-  font-size: 18px;
+  font-size: 14px;
   color: #666;
   max-width: 600px;
   margin: 20px auto 0;
@@ -2819,36 +2908,7 @@ footer iframe {
   margin-bottom: 25px;
 }
 
-.hero-btn {
-  display: inline-block;
-  background: #f2b200;
-  color: #000;
-  padding: 12px 30px;
-  border-radius: 30px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 16px;
-  transition: all 0.3s;
-  border: 2px solid #f2b200;
-}
-
-.hero-btn:hover {
-  background: transparent;
-  color: #f2b200;
-  transform: translateY(-3px);
-}
-
 /* Hero Slider Controls */
-.hero-controls {
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
-  gap: 15px;
-  z-index: 10;
-}
-
 .hero-dot {
   width: 12px;
   height: 12px;
