@@ -2674,11 +2674,6 @@ footer iframe {
   margin-bottom: 40px;
 }
 
-.service-card {
-  flex: 1 1 calc((100% - 120px) / 5);
-  min-width: 180px;
-}
-
 /* Responsive adjustments: reduce columns on smaller screens */
 @media (max-width: 1200px) {
   .service-card {
@@ -2712,19 +2707,16 @@ footer iframe {
   background: white;
   border-radius: 10px;
   /* height: fit-content; */
-  padding: 30px;
+  padding: 25px;
   text-align: center;
   box-shadow: 0 5px 15px rgba(0,0,0,0.08);
   transition: all 0.3s ease;
   border: 1px solid #eee;
-}
-
-/* Make each card fill the row height and allow internal spacing */
-.service-card {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* height: 100%; */
+  flex: 1 1 calc((100% - 120px) / 3);
+  
 }
 
 .service-card:hover {
@@ -3024,8 +3016,7 @@ footer iframe {
 }
 
 .services-preview {
-  padding-top: 60px !important;
-  padding-bottom: 60px !important;
+  padding: 0px !important;
 }
 
 /* Mobile responsive fixes */
@@ -3084,7 +3075,7 @@ footer iframe {
 }
 
 .why-choose-us {
-  padding: 80px 20px;
+  padding: 0px 0px;
   background: var(--page-bg) !important;
 }
 
