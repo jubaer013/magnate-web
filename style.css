@@ -373,8 +373,11 @@ body {
   font-size: 14px;
   margin-top: auto;
   width: 100%;
+  display: grid;
+  gap: 30px;
+  min-height: 350px;
+  height: auto;
 }
-
 .footer-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -695,7 +698,43 @@ footer iframe {
   from { opacity: 0; }
   to { opacity: 1; }
 }
-
+/* ===== FIX FOOTER GAP ON TABLET (480px - 991px) ===== */
+@media (max-width: 991px) and (min-width: 480px) {
+  .footer-grid {
+    gap: 15px !important;
+    grid-template-columns: 1fr 1fr !important;
+  }
+  
+  /* Third column (office slider column) takes full width */
+  .footer-col:nth-child(3) {
+    grid-column: 1 / span 2 !important;
+    order: 4 !important; /* Move to bottom */
+    margin-top: 20px !important;
+    width: 100% !important;
+    padding: 0 5px !important;
+  }
+  
+  /* Fourth column (map column) */
+  .footer-col:nth-child(4) {
+    grid-column: 1 / span 2 !important;
+    order: 5 !important; /* Move to very bottom */
+    margin-top: 20px !important;
+    width: 100% !important;
+    padding: 0 5px !important;
+  }
+  
+  /* Office slider container - remove right gap */
+  .office-slider-container {
+    margin-right: 0 !important;
+    padding-right: 0 !important;
+    width: 100% !important;
+  }
+  
+  .location-container {
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+}
 /* Accessibility focus styles */
 .menu-btn:focus,
 .close-btn:focus,
